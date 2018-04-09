@@ -1,15 +1,21 @@
-def translate (phrase)
-  alphabet = ('a'..'z').to_a
-  voyelles = %w[a e i o u]
-  consonnes = alphabet - voyelles
-
-  if voyelles.include?(phrase[0])
-    phrase + 'ay'
-  elsif consonnes.include?(phrase[0]) && consonnes.include?(phrase[1])
-    phrase[2..-1] + phrase[0..1] + 'ay'
-  elsif consonnes.include?(phrase[0])
-    phrase[1..-1] + phrase[0] + 'ay'
-  else
-    puts phrase
-  end
+def translate(str)
+    str = str.split
+    str.map! do |word|
+        if(word.start_with?('a', 'e', 'i', 'o', 'u'))
+            word += 'ay'
+        elsif(word.start_with?('squ', 'thr', 'sch'))
+            phoneme = word[0, 3]
+            word = word[3, word.length]
+            word += phoneme + 'ay'
+        elsif(word.start_with?('ch', 'qu', 'ph', 'th', 'br'))
+            phoneme = word[0, 2]
+            word = word[2, word.length]
+            word += phoneme + 'ay'
+        else
+            phoneme = word[0]
+            word = word[1, word.length]
+            word += phoneme + 'ay'
+        end
+    end
+    return str.join(' ')
 end
