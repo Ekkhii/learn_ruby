@@ -32,19 +32,20 @@ def first_word (expression)
 end
 
 def titleize(expression)
-  
-  expression_split = expression.split(' ')
-  expression_split.each do |mot|
-	
-	if mot.size > 3
-
-  	puts mot.capitalize
-  	
-	end
+  expression[0] = expression[0].upcase
+  exeptions = %w[and over the]
+  expression_array = expression.split(" ")
+  if expression_array.length > 1
+  	expression_array.each do |expression|
+  	  if exeptions.include?(expression)
+  	    expression
+  	   else 
+  	  	expression[0] = expression[0].upcase
+  	  end
+  	end
+  end
+  expression = expression_array.join(" ")
 end
-end
-
-titleize("Coucou les connards je suis un enculé de ruby")
 
 
 
