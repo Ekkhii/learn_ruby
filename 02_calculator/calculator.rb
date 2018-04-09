@@ -18,3 +18,16 @@ end
 
 #ATTENTION CETTE FONCTIONNALITE FONCTIONNE A PARTIR DE RUBY 2.4.0 !
 #METTEZ VOUS A JOUR SI BESOIN POUR LA CORRECTION
+
+def multiply (*n)
+	n.reduce :*
+end
+
+
+def power(*n)
+	n.reduce :**
+end
+
+def factorial(n)
+	(1..n).inject(:*) || 1
+end
