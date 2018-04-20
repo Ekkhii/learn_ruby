@@ -1,4 +1,8 @@
+
+# Définition de la méthode qui transforme le mot contenu dans le paramêtre
 def translate(str)
+    
+#Permet de decouper le mot 
     str = str.split
     str.map! do |word|
         if(word.start_with?('a', 'e', 'i', 'o', 'u'))
